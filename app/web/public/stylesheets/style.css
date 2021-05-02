@@ -1,0 +1,78 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+button {
+  width: 200px;
+  background-color: burlywood;
+  border: 1px solid burlywood;
+  opacity: 0.9;
+  padding: 5px;
+  border-radius: 4px;
+  margin: 5px;
+  color: black;
+}
+
+button:hover {
+  background-color: burlywood;
+  opacity: 1;
+}
+
+.ui:hover {
+  transform: scale(1.05);
+  transition: 0.4s;
+}
+
+select {
+  width: 200px;
+  padding: 5px;
+  border-radius: 4px;
+  margin: 5px;
+  border-color: burlywood;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.blurred {
+  opacity: 0.2;
+}
+
+.modal {
+  background-color: darkgray;
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  margin-left: -150px;
+  margin-top: -10px;
+  display: none;
+  border-radius: 5px;
+  color: white;
+  line-height: 65px;
+}
+
+.show {
+  display: flex;
+  justify-content: center;
+}
+
+.breathing-animation {
+  animation: fadeinout 4s linear infinite;
+}
+
+.error {
+  background-color: red;
+}
+
+@keyframes fadeinout {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}

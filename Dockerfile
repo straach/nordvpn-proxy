@@ -1,5 +1,5 @@
-FROM alpine:3.10.1
-LABEL MAINTAINER "Jeroen Slot"
+FROM node:15.14.0-alpine3.10
+LABEL MAINTAINER "Jeroen Slot - Upgraded by Achim Strauss"
 
 ENV OVPN_FILES="https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip" \
     OVPN_CONFIG_DIR="/app/ovpn/config" \
@@ -38,6 +38,8 @@ RUN \
       rm -rf /var/cache/apk/*
 
 CMD ["runsvdir", "/app"]
-
 HEALTHCHECK --interval=1m --timeout=10s \
   CMD if [[ $( curl -x localhost:8118 https://api.nordvpn.com/vpn/check/full | jq -r '.["status"]' ) = "Protected" ]] ; then exit 0; else exit 1; fi
+
+
+# pkill runsvdir kills container and restarts

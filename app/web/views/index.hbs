@@ -1,0 +1,12 @@
+<h2>NordVPN Picker</h2>
+<p>
+    <form id="country-form" role="form" form="form"> 
+    <select name="country" id="country">
+        {{#each data}}
+        <option value="{{this.code}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    <br/>
+    <button id="submit" class="ui">Change</button>
+    </form>
+</p>

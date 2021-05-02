@@ -22,8 +22,21 @@ if [[ ! -v SERVER ]]; then
             #GET fastest server based on NordVPN API
             #https://api.nordvpn.com/v1/servers/recommendations
         else
-            echo "$(adddate) INFO: Your country setting will be used. This is set to: ${COUNTRY^^}"
+            FILE_WEB_COUNTRY=/tmp/selected_country
+            if [ -f "$FILE_WEB_COUNTRY" ]
+                then
+                    WEB_SELECTED_COUNTRY=`cat "$FILE_WEB_COUNTRY"`
+                     echo "$(adddate) INFO: Using web-country  ${WEB_SELECTED_COUNTRY^^}"
+                    if [ -n "$WEB_SELECTED_COUNTRY" ]
+                        then
+                            echo "$(adddate) INFO: Setting web-country ${WEB_SELECTED_COUNTRY^^}"
+                            COUNTRY=$WEB_SELECTED_COUNTRY
+                            echo "$(adddate) INFO: Web-country ${COUNTRY^^} set"
+                    fi
+            fi
 
+            echo "$(adddate) INFO: Your country setting will be used. This is set to: ${COUNTRY^^}"
+             echo "$COUNTRY" > FILE_WEB_COUNTRY
             #Country codes will only be fetched once. You can force to get a new list to start a new container
             #This will speed up the process
             if [ -f "$JSON_FILE_SERVER_COUNTRIES" ]

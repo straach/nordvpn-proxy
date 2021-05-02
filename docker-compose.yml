@@ -1,7 +1,8 @@
 version: '3'
 services:
   vpn:
-    image: jeroenslot/nordvpn-proxy:latest
+    image: nordvpn-proxy:latest
+    build: .
     cap_add:
       - NET_ADMIN
     devices:
@@ -12,14 +13,17 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ovpn-data:/app/ovpn/config
+      # - ./app/web:/app/web # only when dev
     environment:
       - USERNAME=<nordvpn_username>
       - PASSWORD=<nordvpn_password>
       - LOCAL_NETWORK=192.168.1.0/24
+      - COUNTRY=us
     networks:
       - default
     ports:
       - 8118:8118
+      - 3000:3000
     restart: always
 
 volumes:
