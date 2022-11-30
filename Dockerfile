@@ -15,6 +15,8 @@ ENV OVPN_FILES="https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip"
     RANDOM_TOP="" \
     LOCAL_NETWORK=""
 
+RUN npm --prefix app/web/ install app/web
+
 COPY app /app
 EXPOSE 8118
 
